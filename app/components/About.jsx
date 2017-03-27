@@ -28,6 +28,9 @@ var About = (props) => {
                 <li>
                     API requested from:<a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a>
                 </li>
+                <li>
+                    Hosted on:<a href="https://dashboard.heroku.com/apps" target="_blank">Heroku</a>
+                </li>
             </ul>
         </div>
     )
