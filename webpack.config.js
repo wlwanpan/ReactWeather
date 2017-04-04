@@ -12,7 +12,8 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             '$': 'jquery',
-            'jQuery': 'jquery'
+            'jQuery': 'jquery',
+            "window.jQuery": "jquery"
         })
     ],
     output: {
@@ -31,7 +32,12 @@ module.exports = {
             Examples: 'app/components/Examples.jsx',
             openWeatherMap: 'app/api/openWeatherMap.jsx',
             ErrorModal: 'app/components/ErrorModal.jsx',
-            applicationStyles: 'app/styles/app.scss'
+            applicationStyles: 'app/styles/app.scss',
+            SvgBox: 'app/animation/SvgBox.jsx',
+            SvgBody: 'app/animation/SvgBody.jsx',
+            SvgHead: 'app/animation/SvgHead.jsx',
+            SvgClouds: 'app/animation/SvgClouds.jsx',
+            SvgRain: 'app/animation/SvgRain.jsx'
         },
         extensions: ['', '.js', '.jsx']
     },

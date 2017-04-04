@@ -1,12 +1,44 @@
 $space-large: 2.5rem;
-$title-purple: #555;
+$title-grey: #555;
+$message-grey: #191919;
 
 .page-title {
-    color: $title-purple;
+    color: $title-grey;
     margin-top: $space-large;
     margin-bottom: $space-large;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.text-message {
+    color: $message-grey;
 }
 
 input[type=search] {
     box-shadow: none;
+}
+
+#svg-box-container {
+    position: relative;
+}
+
+/* --- MINION CSS ANIMATIONS --- */
+@keyframes minion-eye-blink{
+	0%, 80% { transform: scaleY(1); }
+	81%, 86% { transform: scaleY(0); }
+    87%, 100% { transform: scaleY(1); }
+}
+#head-eyes {
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: minion-eye-blink 3s ease-in-out 0s infinite alternate-reverse;
+    -moz-animation: minion-eye-blink 3s ease-in-out 0s infinite alternate-reverse;
+    animation: minion-eye-blink 3s ease-in-out 0s infinite alternate-reverse;
+
+}
+@keyframes rain-drop {
+	0% { transform: translateY(0); }
+	100% { transform: translateY(100px); }
+}
+.rain-drop {
+    -webkit-transform-origin: 50% 100%;
 }

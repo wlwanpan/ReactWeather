@@ -3,6 +3,7 @@ var WeatherForm = require('WeatherForm');
 var WeatherMessage = require('WeatherMessage');
 var openWeatherMap = require('openWeatherMap');
 var ErrorModal = require('ErrorModal');
+var SvgBox = require('SvgBox');
 
 var Weather = React.createClass({
     getInitialState: function () {
@@ -12,22 +13,24 @@ var Weather = React.createClass({
     },
     handleSearch: function (location) {
 
-        var that = this;
-
         this.setState({
             isLoading: true,
             errorMessage: undefined,
             location: undefined,
+            country: undefined,
             temp: undefined
         });
-        openWeatherMap.getTemp(location).then(function (temp) {
-            that.setState({
+        openWeatherMap.getTemp(location).then((RequestedJsn) => {
+            //console.log(RequestedJsn.weather[0]);
+            this.setState({
                 isLoading: false,
-                location: location,
-                temp: temp
+                location: RequestedJsn.name,
+                country: RequestedJsn.sys.country,
+                temp: RequestedJsn.main.temp,
+                WeatherCondition: RequestedJsn.weather[0].main
             });
-        }, function (e) {
-            that.setState({
+        }, (e) => {
+            this.setState({
                 isLoading: false,
                 errorMessage: e.message,
             });
@@ -50,13 +53,15 @@ var Weather = React.createClass({
         }
     },
     render: function () {
-        var {isLoading, temp, location, errorMessage} = this.state;
+        var {isLoading, temp, location, country, errorMessage} = this.state;
 
         function renderMessage () {
             if (isLoading) {
                 return <h3 className="text-center">Fetching Weather ...</h3>
             } else if (temp && location) {
-                return <WeatherMessage temp={temp} location={location}/>
+                return <WeatherMessage temp={temp} location={location} country={country}/>
+            } else {
+                return (<p></p>);
             }
         }
 
@@ -74,6 +79,8 @@ var Weather = React.createClass({
                 <WeatherForm onSearch={this.handleSearch}/>
                 {renderMessage()}
                 {renderError()}
+                <SvgBox onWeatherCondition={this.state.WeatherCondition}/>
+
             </div>
         )
     }
