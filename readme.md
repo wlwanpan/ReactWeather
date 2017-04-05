@@ -1,3 +1,3 @@
-## A Simple Weather App
+# A Simple Weather App built on React
 
-# Deployed on Heroku @ https://git.heroku.com/gentle-scrubland-89795.git
+## Deployed on Heroku @ http://gentle-scrubland-89795.herokuapp.com
