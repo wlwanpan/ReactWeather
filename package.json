@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Andrew Mead",
+  "author": "Warren Wan",
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.4",
